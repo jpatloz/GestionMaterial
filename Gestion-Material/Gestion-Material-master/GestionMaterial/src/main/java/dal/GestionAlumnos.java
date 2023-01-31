@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -36,6 +37,7 @@ public class GestionAlumnos {
 	@Column(name="num_telefono",nullable=false)
 	private String num_telefono;
 	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_ordenador")
 	GestionOrdenadores ordenadores;
 	
 	//GETTERS Y SETTERS

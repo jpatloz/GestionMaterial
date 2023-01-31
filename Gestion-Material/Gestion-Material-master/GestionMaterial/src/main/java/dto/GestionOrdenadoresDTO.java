@@ -2,8 +2,11 @@ package dto;
 
 import java.util.Calendar;
 
+import org.springframework.stereotype.Component;
+
 import dal.GestionAlumnos;
 
+@Component
 public class GestionOrdenadoresDTO {
 	
 	//ATRIBUTOS

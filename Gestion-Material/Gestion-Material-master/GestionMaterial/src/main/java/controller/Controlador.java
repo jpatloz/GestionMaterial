@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Controller;
 
 import dal.GestionAlumnos;
 import dal.GestionOrdenadores;
@@ -18,6 +19,7 @@ import dto.GestionAlumnosDTO;
 import dto.GestionOrdenadoresDTO;
 import impl.Consultas;
 
+@Controller
 public class Controlador {
 	
 		public static void main(String[] args) {
@@ -32,12 +34,12 @@ public class Controlador {
 		do {
 		System.out.println("Escriba el valor a uno de los asignados:");
 		System.out.println("");
-		System.out.println("1.-Matricula alumno. ");
-		System.out.println("2.-Baja de un alumno. ");
-		System.out.println("3.-Alta de portátil. ");
-		System.out.println("4.-Consulta portátil asignado a un alumno (se conoce el número de alumno se busca el portátil). ");
-		System.out.println("5.-Consulta alumno asignado a un portátil (se conoce el identificador del portátil se busca el alumno). ");
-		System.out.println("6.-Consulta alumno asignado a un portátil (se conoce el identificador del portátil se busca el alumno). ");
+		System.out.println("1.-Matricula alumno.");
+		System.out.println("2.-Baja de un alumno.");
+		System.out.println("3.-Alta de portátil.");
+		System.out.println("4.-Consulta portátil asignado a un alumno (se conoce el número de alumno se busca el portátil).");
+		System.out.println("5.-Consulta alumno asignado a un portátil (se conoce el identificador del portátil se busca el alumno).");
+		System.out.println("6.-Ver todos los alumnos con su asignación de portátil.");
 		System.out.println("7.-Salir. ");
 		
 		System.out.println();
@@ -48,7 +50,7 @@ public class Controlador {
 		
 		//DTO para el pago repostaje
 		GestionAlumnosDTO DTO;
-		GestionAlumnos gestionAlumnos;
+		GestionAlumnos gestionAlumnos = new GestionAlumnos();
 				
 		//DTO para el control camiones
 		GestionOrdenadoresDTO DTOOrdenadores;
@@ -56,24 +58,22 @@ public class Controlador {
 		
 		switch (opcion1) {
 		case 1:
-		System.out.println("Has escogido la opción de repostaje con pago normal");
-		DTO = aDto.AGestionAlumnosDTO("rvhfyjkeodkkuhgu3", fecha, "Jesus", "Patricio Lozano", "954321123",  gestionOrd);
+		System.out.println("Ha escogido la opcion de matricular a un alumno");
+		DTO = aDto.AGestionAlumnosDTO("fenujfnddjfkd", fecha, "Juan", "Gomez Cano", "954654567",  gestionOrd);
 		gestionAlumnos = aDao.GestionAlumnosDTOADAO(DTO);
 		consulta.insertarUnaMatricula(gestionAlumnos);
 		break;
 		case 2:
-		/*
-		System.out.println("Has escogido la opción de repostaje con pago con factura");
-		DTO = aDto.APagoRepostajeFacturaDTO("rvhfyjkeodkkuhgu3", fecha, 12, "7789432Q", "9008BTX", fecha);
-		pagosRepostaje = aDao.PagoRepostajeDTOADAO(DTO);
-		consulta.insertarUnRepostaje(pagosRepostaje);
-		*/
+		System.out.println("Ha escogido la opcion de dar de baja a un alumno");
+		//DTO = 
+		//gestionAlumnos = aDao.GestionAlumnosDTOADAO(DTO);
+		consulta.eliminarUnAlumno("Javier");
 		break;
 		case 3:
-			/*
-		System.out.println("Has escogido la opción de ver todos los repostajes");
-		System.out.println("Lista repostajes: " + consulta.buscarTodos());
-		*/
+		System.out.println("Has escogido la opción de alta de un portatil");
+		DTOOrdenadores = aDto.AGestionOrdenadoresDTO("rdjjnjnrfofyjkeodkkuhgu3", fecha, "LG", "EG7", gestionAlumnos);
+		gestionOrd = aDao.GestionOrdenadoresDTOADAO(DTOOrdenadores);
+		consulta.insertarUnOrdenador(gestionOrd);
 		break;
 		case 4:
 			/*

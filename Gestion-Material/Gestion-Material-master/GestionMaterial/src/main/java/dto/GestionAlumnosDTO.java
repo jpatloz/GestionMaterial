@@ -3,8 +3,11 @@ package dto;
 
 import java.util.Calendar;
 
+import org.springframework.stereotype.Component;
+
 import dal.GestionOrdenadores;
 
+@Component
 public class GestionAlumnosDTO {
 	
 	//ATRIBUTOS
@@ -39,11 +42,26 @@ public class GestionAlumnosDTO {
 		this.ordenadores = ordenadores;
 	}
 	
+	
+	//Constructor para los alumnos sin el id del ordenador
+	
+	public GestionAlumnosDTO(String id_alumno, String md_uuid, Calendar md_date, String nombre_alumno,
+			String apellidos_alumno, String num_telefono) {
+		super();
+		this.id_alumno = id_alumno;
+		this.md_uuid = md_uuid;
+		this.md_date = md_date;
+		this.nombre_alumno = nombre_alumno;
+		this.apellidos_alumno = apellidos_alumno;
+		this.num_telefono = num_telefono;
+	}
+	
 	//GETTERS Y SETTERS
 	
 	public String getId_alumno() {
 		return id_alumno;
 	}
+
 	public void setId_alumno(String id_alumno) {
 		this.id_alumno = id_alumno;
 	}

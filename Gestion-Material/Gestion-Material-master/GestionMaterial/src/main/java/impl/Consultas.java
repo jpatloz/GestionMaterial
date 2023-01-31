@@ -14,7 +14,7 @@ import dal.GestionOrdenadores;
 import dal.GestionOrdenadoresImpl;
 
 @Service
-public class Consultas implements ConsultasServicio{
+public class Consultas{
 
 	@Autowired
 	private GestionAlumnosImpl gai;
@@ -39,6 +39,12 @@ public class Consultas implements ConsultasServicio{
 	public List<GestionAlumnos> buscarAlumnos(){
 		return gai.buscarAlumnos();
 	}
+	
+	@Transactional
+	public void eliminarUnAlumno(String nombre_alumno) {
+		gai.eliminarAlumno(nombre_alumno);
+	}
+	
 	
 	//Consultas de gestión de ordenadores
 
