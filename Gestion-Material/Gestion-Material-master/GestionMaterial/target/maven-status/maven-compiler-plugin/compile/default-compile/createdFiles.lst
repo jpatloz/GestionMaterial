@@ -1,0 +1,15 @@
+dto\ADaoServicio.class
+impl\Consultas.class
+dal\GestionOrdenadoresServicio.class
+impl\ConsultasServicio.class
+dal\GestionAlumnosServicio.class
+dal\GestionOrdenadores.class
+dto\ADaoServicioImpl.class
+dto\GestionOrdenadoresDTO.class
+controller\Controlador.class
+dto\GestionAlumnosDTO.class
+dal\GestionAlumnosImpl.class
+dal\GestionOrdenadoresImpl.class
+dto\ADtoServicio.class
+dto\ADtoServicioImpl.class
+dal\GestionAlumnos.class
