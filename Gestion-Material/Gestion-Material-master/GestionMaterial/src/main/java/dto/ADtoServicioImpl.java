@@ -5,6 +5,10 @@ import java.util.Calendar;
 import dal.GestionAlumnos;
 import dal.GestionOrdenadores;
 
+/*
+ * Clase que recoge los datos del DTO
+ */
+
 public class ADtoServicioImpl  implements ADtoServicio{
 
 	@Override

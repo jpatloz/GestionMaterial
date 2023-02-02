@@ -11,4 +11,6 @@ public interface GestionOrdenadoresServicio {
 	public void insertarOrdenador(GestionOrdenadores gestionOrdenadores);
 
 	public List<GestionOrdenadores> buscarOrdenadores();
+	
+	public GestionOrdenadores buscarOrdenadorporIdAlum(long idALum);
 }

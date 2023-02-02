@@ -44,22 +44,6 @@ public class GestionAlumnos {
 	@OneToOne
 	GestionOrdenadores ordenadores;
 	
-	public GestionAlumnos(String md_uuid, Calendar md_date, String nombre_alumno, String apellidos_alumno,
-			String num_telefono, GestionOrdenadores ordenadores) {
-		super();
-		this.md_uuid = md_uuid;
-		this.md_date = md_date;
-		this.nombre_alumno = nombre_alumno;
-		this.apellidos_alumno = apellidos_alumno;
-		this.num_telefono = num_telefono;
-		this.ordenadores = ordenadores;
-	}
-	
-	public GestionAlumnos() {
-		super();
-	}
-
-	
 	//GETTERS Y SETTERS
 	
 	public long getId_alumno() {

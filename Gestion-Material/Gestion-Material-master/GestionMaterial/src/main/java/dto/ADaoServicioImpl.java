@@ -5,6 +5,11 @@ import java.util.Random;
 import dal.GestionAlumnos;
 import dal.GestionOrdenadores;
 
+
+/*
+ * Clase que implementa los metodos de nuestra interfaz aDao 
+ */
+
 public class ADaoServicioImpl implements ADaoServicio{
 
 	@Override

@@ -13,7 +13,9 @@ import dal.GestionAlumnosImpl;
 import dal.GestionOrdenadores;
 import dal.GestionOrdenadoresImpl;
 
-
+/*
+ * Clase que contiene las transacciones a nuestra base de datos
+ */
 
 @Service
 public class Consultas{
@@ -25,45 +27,53 @@ public class Consultas{
 	
 	//Consultas de gestión de alumnos
 	
+	//Consulta para insertar una matrícula
+	
 	@Transactional
 	public void insertarUnaMatricula(GestionAlumnos gestionAlumnos) {
 		gai.insertarMatricula(gestionAlumnos);
 	}
 	
-	@Transactional
-	public void insertarListaMatriculas(Collection<GestionAlumnos> colAlumnos){
-		for (GestionAlumnos gestionAlumnos : colAlumnos) {
-			gai.insertarMatricula(gestionAlumnos);
-		}
-	}
+	//Consulta para buscar todos los alumnos 
 	
-	@Transactional
-	public List<GestionAlumnos> buscarAlumnos(){
-		return gai.buscarAlumnos();
-	}
+	public List<GestionAlumnos> buscarTodos(){
+        return gai.buscarTodos();
+    }
+	
+	//Consulta para eliminar a un alumno
 	
 	@Transactional
 	public void eliminarUnAlumno(long id) {
 		gai.eliminarAlumno(id);
 	}
 	
+	//COnsulta para buscar un alumno por id de ordenador
+	
+	@Transactional
+	public GestionAlumnos buscarAlumnoPorIdOrdenador(long idOrd) {
+		return gai.buscarAlumnoPorIdOrdenador(idOrd);
+	}
+	
+	
 	
 	//Consultas de gestión de ordenadores
 
+	//Consulta para insertar un ordenador
+	
 	@Transactional
 	public void insertarUnOrdenador(GestionOrdenadores gestionOrdenadores) {
 		goi.insertarOrdenador(gestionOrdenadores);
 	}
 
-	@Transactional
-	public void insertarListaOrdenadores(Collection<GestionOrdenadores> colOrdenadores) {
-		for(GestionOrdenadores gestionOrdenadores : colOrdenadores) {
-			goi.insertarOrdenador(gestionOrdenadores);
-		}
+	//Consulta para buscar un ordenador por id de alumno
+	
+	public GestionOrdenadores buscarOrdenadorPorIdAlumno(long idAlum) {
+		return goi.buscarOrdenadorporIdAlum(idAlum);
 	}
-
-	@Transactional
+	
+	//Consulta para buscar un ordenador
 	public List<GestionOrdenadores> buscarOrdenadores() {
 		return goi.buscarOrdenadores();
 	}
+	
 }

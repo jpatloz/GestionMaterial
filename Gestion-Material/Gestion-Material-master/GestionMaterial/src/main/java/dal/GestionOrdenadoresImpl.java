@@ -1,5 +1,6 @@
 package dal;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -33,7 +34,7 @@ public class GestionOrdenadoresImpl implements GestionOrdenadoresServicio{
 		}
 	}
 	
-	//Método para buscar un ordenador por su id
+	//Método para buscar un ordenador 
 
 	@Override
 	public List<GestionOrdenadores> buscarOrdenadores() {
@@ -43,6 +44,23 @@ public class GestionOrdenadoresImpl implements GestionOrdenadoresServicio{
 		return query.getResultList();
 		}catch(Exception e) {
 			System.out.println("[insertarOrdenador]: " + e);
+		}
+		return null;
+	}
+
+	//Método para buscar un ordenador por el id de alumno
+	
+	@Override
+	public GestionOrdenadores buscarOrdenadorporIdAlum(long idAlum) {
+		try {
+		String jpql = "SELECT alum FROM GestionAlumnos alum WHERE alum.id_alumno = :idAl";
+        Query query = emOrd.createQuery(jpql);
+        query.setParameter("idAl", idAlum);
+		ArrayList<GestionAlumnos> listaAlumnos = (ArrayList<GestionAlumnos>) query.getResultList();
+		GestionOrdenadores ordenadores = listaAlumnos.get(0).getOrdenadores();
+		return ordenadores;
+		}catch(Exception e) {
+			System.out.println("[buscarOrdenadorporIdAlum]");
 		}
 		return null;
 	}

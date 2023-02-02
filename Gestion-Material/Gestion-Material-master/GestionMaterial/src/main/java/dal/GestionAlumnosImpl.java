@@ -34,19 +34,17 @@ public class GestionAlumnosImpl implements GestionAlumnosServicio{
 		}
 	}
 	
-	//Método para buscar un alumno por su id
+	//Método para buscar todos los alumnos con su ordenador asignado
 
 	@Override
-	public List<GestionAlumnos> buscarAlumnos() {
+    public List<GestionAlumnos> buscarTodos() {
 		try {
-		String jpql = ("SELECT alum FROM GestionAlumnos alum WHERE alum.ordenadores = :id_al");
-		Query query = em.createQuery(jpql);
-		return query.getResultList();
+		return em.createQuery("SELECT alumnos FROM GestionAlumnos alumnos").getResultList();
 		}catch(Exception e) {
-			System.out.println("[buscarAlumnos]: " + e);
+			System.out.println("[buscarTodos]");
 		}
 		return null;
-	}
+    }
 	
 	//Método para eliminar un alumno por su id
 
@@ -61,6 +59,24 @@ public class GestionAlumnosImpl implements GestionAlumnosServicio{
 		}catch(Exception e) {
 			System.out.println("[eliminarAlumno]: " + e);
 		}
-		
 	}
+	
+	//Método que busca un alumno por el id ordenador
+
+	@Override
+	public GestionAlumnos buscarAlumnoPorIdOrdenador(long idOrd) {
+		try {
+		String jpql = "SELECT ord FROM GestionOrdenadores ord WHERE ord.id_ordenador = :idOrd";
+		Query query = em.createQuery(jpql);
+		query.setParameter("idOrd", idOrd);
+		ArrayList<GestionOrdenadores> listaOrdenadores = (ArrayList<GestionOrdenadores>) query.getResultList();
+		GestionAlumnos alumnos = listaOrdenadores.get(0).getAlumno();
+		return alumnos;
+		}catch(Exception e) {
+			System.out.println("[buscarAlumnoPorIdOrdenador]");
+		}
+		return null;
+	}
+	
+	
 }

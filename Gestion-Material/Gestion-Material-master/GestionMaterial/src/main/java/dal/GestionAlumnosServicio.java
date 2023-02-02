@@ -10,7 +10,9 @@ public interface GestionAlumnosServicio{
 	
 	public void insertarMatricula(GestionAlumnos gestionAlumnos);
 
-	public List<GestionAlumnos> buscarAlumnos();
+	public List<GestionAlumnos> buscarTodos();
 	
 	public void eliminarAlumno(long id);
+	
+	public GestionAlumnos buscarAlumnoPorIdOrdenador(long idOrd);
 }

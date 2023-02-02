@@ -1,5 +1,9 @@
 package dto;
 
+/*
+ * Interfaz que contiene los metodos para pasar de DTO a DAO
+ */
+
 import dal.GestionAlumnos;
 import dal.GestionOrdenadores;
 

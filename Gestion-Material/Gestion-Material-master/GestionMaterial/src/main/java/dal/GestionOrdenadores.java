@@ -41,25 +41,6 @@ public class GestionOrdenadores {
 	@OneToOne(mappedBy="ordenadores")
 	GestionAlumnos alumno;
 	
-	//CONSTRUCTORES
-	
-	//Constructor para el ordenador
-	
-	public GestionOrdenadores(String md_uuid, Calendar md_date, String modelo, String marca) {
-		super();
-		this.md_uuid = md_uuid;
-		this.md_date = md_date;
-		this.modelo = modelo;
-		this.marca = marca;
-	}
-	
-	//Constructor vacío
-	
-	public GestionOrdenadores() {
-		super();
-	}
-
-	
 	//GETTERS Y SETTERS
 
 	public long getId_ordenador() {

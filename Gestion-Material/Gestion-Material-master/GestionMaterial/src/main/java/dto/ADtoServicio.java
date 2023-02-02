@@ -5,6 +5,11 @@ import java.util.Calendar;
 import dal.GestionAlumnos;
 import dal.GestionOrdenadores;
 
+
+/*
+ * Interfaz para definir los métodos para el DTO
+ */
+
 public interface ADtoServicio {
 
 	public GestionAlumnosDTO AGestionAlumnosDTO(Calendar md_date, String nombre_alumno,
