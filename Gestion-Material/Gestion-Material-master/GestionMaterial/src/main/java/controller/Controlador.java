@@ -27,7 +27,10 @@ public class Controlador {
 		ApplicationContext context= new ClassPathXmlApplicationContext("contexto.xml");
 		Consultas consulta = (Consultas) context.getBean(Consultas.class);
 		
+		boolean exit = false;
+		String md_uuid = java.util.UUID.randomUUID().toString();
 		Integer opcion1;
+		
 		ADtoServicio aDto = new ADtoServicioImpl();
 		ADaoServicio aDao = new ADaoServicioImpl();
 		
@@ -36,10 +39,10 @@ public class Controlador {
 		System.out.println("");
 		System.out.println("1.-Matricula alumno.");
 		System.out.println("2.-Baja de un alumno.");
-		System.out.println("3.-Alta de portátil.");
-		System.out.println("4.-Consulta portátil asignado a un alumno (se conoce el número de alumno se busca el portátil).");
-		System.out.println("5.-Consulta alumno asignado a un portátil (se conoce el identificador del portátil se busca el alumno).");
-		System.out.println("6.-Ver todos los alumnos con su asignación de portátil.");
+		System.out.println("3.-Alta de portatil.");
+		System.out.println("4.-Consulta portatil asignado a un alumno (se conoce el numero de alumno se busca el portatil).");
+		System.out.println("5.-Consulta alumno asignado a un portátil (se conoce el identificador del portatil se busca el alumno).");
+		System.out.println("6.-Ver todos los alumnos con su asignacion de portatil.");
 		System.out.println("7.-Salir. ");
 		
 		System.out.println();
@@ -47,33 +50,37 @@ public class Controlador {
 		Scanner scan = new Scanner(System.in);
 		opcion1 = scan.nextInt();
 		Calendar fecha = Calendar.getInstance();
+		int id;
+		
+		List<GestionOrdenadores> lista = new ArrayList<>();
+		lista = consulta.buscarOrdenadores();
 		
 		//DTO para el pago repostaje
-		GestionAlumnosDTO DTO;
+		GestionAlumnosDTO DTOAlumnos;
 		GestionAlumnos gestionAlumnos = new GestionAlumnos();
 				
 		//DTO para el control camiones
 		GestionOrdenadoresDTO DTOOrdenadores;
-		GestionOrdenadores gestionOrd = new GestionOrdenadores();
+		GestionOrdenadores gestionOrdenadores = new GestionOrdenadores();
 		
 		switch (opcion1) {
 		case 1:
-		System.out.println("Ha escogido la opcion de matricular a un alumno");
-		DTO = aDto.AGestionAlumnosDTO("fenujfnddjfkd", fecha, "Juan", "Gomez Cano", "954654567",  gestionOrd);
-		gestionAlumnos = aDao.GestionAlumnosDTOADAO(DTO);
+		System.out.println("Ha escogido la opcion de matricular a un alumno: ");
+		DTOAlumnos = aDto.AGestionAlumnosDTO(fecha, "Jesus", "Patricio Lozano", "954654567", lista.get(0));
+		gestionAlumnos = aDao.GestionAlumnosDTOADAO(DTOAlumnos);
 		consulta.insertarUnaMatricula(gestionAlumnos);
 		break;
 		case 2:
-		System.out.println("Ha escogido la opcion de dar de baja a un alumno");
-		//DTO = 
-		//gestionAlumnos = aDao.GestionAlumnosDTOADAO(DTO);
-		consulta.eliminarUnAlumno("Javier");
+		System.out.println("Ha escogido la opcion de dar de baja a un alumno: ");
+		System.out.println("Indique el id del alumno que quiere eliminar");
+		id = scan.nextInt();
+		consulta.eliminarUnAlumno(id);
 		break;
 		case 3:
-		System.out.println("Has escogido la opción de alta de un portatil");
-		DTOOrdenadores = aDto.AGestionOrdenadoresDTO("rdjjnjnrfofyjkeodkkuhgu3", fecha, "LG", "EG7", gestionAlumnos);
-		gestionOrd = aDao.GestionOrdenadoresDTOADAO(DTOOrdenadores);
-		consulta.insertarUnOrdenador(gestionOrd);
+		System.out.println("Has escogido la opcion de alta de un portatil: ");
+		DTOOrdenadores = aDto.AGestionOrdenadoresDTO(fecha, "LG", "EG7");
+		gestionOrdenadores = aDao.GestionOrdenadoresDTOADAO(DTOOrdenadores);
+		consulta.insertarUnOrdenador(gestionOrdenadores);
 		break;
 		case 4:
 			/*

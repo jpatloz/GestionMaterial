@@ -6,13 +6,15 @@ import org.springframework.stereotype.Component;
 
 import dal.GestionAlumnos;
 
+/*
+ * Clase de ordenador en la que recogemos la información necesaria
+ */
+
+
 @Component
 public class GestionOrdenadoresDTO {
 	
 	//ATRIBUTOS
-	
-	private String id_ordenador;
-	private String md_uuid;
 	private Calendar md_date;
 	private String modelo;
 	private String marca;
@@ -28,30 +30,15 @@ public class GestionOrdenadoresDTO {
 		
 	//Constructor para los ordenadores
 		
-	public GestionOrdenadoresDTO(String md_uuid, Calendar md_date, String modelo, String marca,
-			GestionAlumnos alumno) {
+	public GestionOrdenadoresDTO(Calendar md_date, String modelo, String marca) {
 		super();
-		this.md_uuid = md_uuid;
 		this.md_date = md_date;
 		this.modelo = modelo;
 		this.marca = marca;
-		this.alumno = alumno;
 	}
 		
 	//GETTERS Y SETTERS
-		
-	public String getId_ordenador() {
-			return id_ordenador;
-	}
-	public void setId_ordenador(String id_ordenador) {
-		this.id_ordenador = id_ordenador;
-	}
-	public String getMd_uuid() {
-		return md_uuid;
-	}
-	public void setMd_uuid(String md_uuid) {
-		this.md_uuid = md_uuid;
-	}
+
 	public Calendar getMd_date() {
 		return md_date;
 	}
@@ -81,8 +68,8 @@ public class GestionOrdenadoresDTO {
 		
 	@Override
 	public String toString() {
-		return "GestionOrdenadores [md_uuid=" + md_uuid + ", md_date=" + md_date.getTime()
-				+ ", modelo=" + modelo + ", marca=" + marca + ", alumno=" + alumno + "]";
+		return "Ordenador: " + "md_date=" + md_date + ", modelo=" + modelo + ", marca=" + marca 
+				+ ", alumno=" + alumno + "]";
 	}
 
 }

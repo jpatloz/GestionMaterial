@@ -13,6 +13,8 @@ import dal.GestionAlumnosImpl;
 import dal.GestionOrdenadores;
 import dal.GestionOrdenadoresImpl;
 
+
+
 @Service
 public class Consultas{
 
@@ -41,8 +43,8 @@ public class Consultas{
 	}
 	
 	@Transactional
-	public void eliminarUnAlumno(String nombre_alumno) {
-		gai.eliminarAlumno(nombre_alumno);
+	public void eliminarUnAlumno(long id) {
+		gai.eliminarAlumno(id);
 	}
 	
 	

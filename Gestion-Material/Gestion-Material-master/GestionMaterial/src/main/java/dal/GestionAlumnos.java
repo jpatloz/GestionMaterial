@@ -15,6 +15,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+/*
+ * Clase de la tabla de alumnos
+ * Esta tabla contendra el teléfono del alumno, el nombre y apellidos y el identificador
+ */
+
 @Entity
 @Table(name= "alu_tch_gestion", schema= "dlk_gmt_alu_ord")
 public class GestionAlumnos {
@@ -24,7 +29,7 @@ public class GestionAlumnos {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_alumno", unique=true, nullable=false)
-	private String id_alumno;
+	private long id_alumno;
 	@Column(name="md_uuid",nullable=false)
 	private String md_uuid;
 	@Column(name="md_date",nullable=false)
@@ -36,16 +41,31 @@ public class GestionAlumnos {
 	private String apellidos_alumno;
 	@Column(name="num_telefono",nullable=false)
 	private String num_telefono;
-	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_ordenador")
+	@OneToOne
 	GestionOrdenadores ordenadores;
+	
+	public GestionAlumnos(String md_uuid, Calendar md_date, String nombre_alumno, String apellidos_alumno,
+			String num_telefono, GestionOrdenadores ordenadores) {
+		super();
+		this.md_uuid = md_uuid;
+		this.md_date = md_date;
+		this.nombre_alumno = nombre_alumno;
+		this.apellidos_alumno = apellidos_alumno;
+		this.num_telefono = num_telefono;
+		this.ordenadores = ordenadores;
+	}
+	
+	public GestionAlumnos() {
+		super();
+	}
+
 	
 	//GETTERS Y SETTERS
 	
-	public String getId_alumno() {
+	public long getId_alumno() {
 		return id_alumno;
 	}
-	public void setId_alumno(String id_alumno) {
+	public void setId_alumno(long id_alumno) {
 		this.id_alumno = id_alumno;
 	}
 	public String getMd_uuid() {

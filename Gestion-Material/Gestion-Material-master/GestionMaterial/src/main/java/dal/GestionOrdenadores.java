@@ -1,4 +1,4 @@
-package dal;
+ package dal;
 
 import java.util.Calendar;
 
@@ -14,6 +14,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+/*
+ * Clase de la tabla de ordenadores
+ * Esta tabla contendra la marca del ordenador, el modelo y el identificador
+ */
+
 @Entity
 @Table(name= "ord_tch_gestion", schema= "dlk_gmt_alu_ord")
 public class GestionOrdenadores {
@@ -23,7 +28,7 @@ public class GestionOrdenadores {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_ordenador", unique=true, nullable=false)
-	private String id_ordenador;
+	private long id_ordenador;
 	@Column(name="md_uuid",nullable=false)
 	private String md_uuid;
 	@Column(name="md_date",nullable=false)
@@ -33,15 +38,34 @@ public class GestionOrdenadores {
 	private String modelo;
 	@Column(name="marca",nullable=false)
 	private String marca;
-	@OneToOne(mappedBy="ordenadores", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@OneToOne(mappedBy="ordenadores")
 	GestionAlumnos alumno;
 	
-	//GETTERS Y SETTERS
+	//CONSTRUCTORES
 	
-	public String getId_ordenador() {
+	//Constructor para el ordenador
+	
+	public GestionOrdenadores(String md_uuid, Calendar md_date, String modelo, String marca) {
+		super();
+		this.md_uuid = md_uuid;
+		this.md_date = md_date;
+		this.modelo = modelo;
+		this.marca = marca;
+	}
+	
+	//Constructor vacío
+	
+	public GestionOrdenadores() {
+		super();
+	}
+
+	
+	//GETTERS Y SETTERS
+
+	public long getId_ordenador() {
 		return id_ordenador;
 	}
-	public void setId_ordenador(String id_ordenador) {
+	public void setId_ordenador(long id_ordenador) {
 		this.id_ordenador = id_ordenador;
 	}
 	public String getMd_uuid() {
